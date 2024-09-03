@@ -1,28 +1,7 @@
 package br.com.fujideia.iesp.tecback.controller;
-
 import br.com.fujideia.iesp.tecback.model.Filme;
 import br.com.fujideia.iesp.tecback.repository.FilmeRepository;
-<<<<<<< HEAD
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-
-@RequiredArgsConstructor
-@RestController
-@RequestMapping("/filme")
-public class FilmeController {
-    private final FilmeRepository repository;
-
-    @PostMapping
-    public Filme salvar(@RequestBody Filme filme){
-        return repository.save(filme);
-    }
-
-    @GetMapping
-    public List<Filme>listar(){
-        return repository.findAll();
-=======
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,12 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/filmes")
 public class FilmeController {
 
     @Autowired
-    private FilmeRepository filmeRepository;
+    private final FilmeRepository filmeRepository;
 
     @GetMapping
     public List<Filme> listarTodos() {
@@ -82,6 +62,6 @@ public class FilmeController {
         } else {
             return ResponseEntity.notFound().build();
         }
->>>>>>> upstream/master
+
     }
 }

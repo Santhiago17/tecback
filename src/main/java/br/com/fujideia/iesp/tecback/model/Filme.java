@@ -1,26 +1,6 @@
 package br.com.fujideia.iesp.tecback.model;
 
-<<<<<<< HEAD
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
-@Entity
-public class Filme {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String titulo;
-    private String descricao;
-    private String genero;
-    private Integer ano;
-
-=======
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -58,5 +38,5 @@ public class Filme {
             inverseJoinColumns = @JoinColumn(name = "genero_id")
     )
     private List<Genero> generos;
->>>>>>> upstream/master
+
 }
