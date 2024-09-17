@@ -2,6 +2,7 @@ package br.com.fujideia.iesp.tecback.repository;
 
 import br.com.fujideia.iesp.tecback.model.Filme;
 import org.springframework.data.jpa.repository.JpaRepository;
+import br.com.fujideia.iesp.tecback.model.Diretor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -16,4 +17,7 @@ public interface FilmeRepository extends JpaRepository<Filme, Long> {
 
     @Query("SELECT f FROM Filme f WHERE f.anoLancamento = :ano")
     List<Filme> buscarPorAno(@Param("ano") int ano);
+
+    @Query("SELECT DISTINCT d FROM Filme f JOIN f.diretor d")
+    List<Diretor> listarDiretores();
 }

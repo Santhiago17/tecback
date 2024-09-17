@@ -93,7 +93,7 @@ public class FilmeService {
 
     private Diretor convertToEntity(DiretorDTO diretorDTO) {
         if (diretorDTO == null) {
-            return null; // Retorne null caso não haja Diretor
+            return null;
         }
         Diretor diretor = new Diretor();
         diretor.setId(diretorDTO.getId());
