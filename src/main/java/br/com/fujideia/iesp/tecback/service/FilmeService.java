@@ -36,4 +36,14 @@ public class FilmeService {
             throw new RuntimeException("Filme not found");
         }
     }
+
+    public Filme atualizarFilme(Long id,Filme filme){
+        Optional<Filme> filmeOptional = repository.findById(id);
+        if(filmeOptional.isPresent()){
+            filme.setId(id);
+            repository.save(filme);
+        }
+        filme.setId(id);
+        return repository.save(filme);
+    }
 }
