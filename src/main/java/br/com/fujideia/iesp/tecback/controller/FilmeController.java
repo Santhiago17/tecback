@@ -1,5 +1,7 @@
 package br.com.fujideia.iesp.tecback.controller;
 
+import br.com.fujideia.iesp.tecback.client.ViaCepClient;
+import br.com.fujideia.iesp.tecback.model.dto.EnderecoDTO;
 import br.com.fujideia.iesp.tecback.model.dto.FilmeDTO;
 import br.com.fujideia.iesp.tecback.service.FilmeService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,14 @@ import java.util.Optional;
 public class FilmeController {
 
     private final FilmeService filmeService;
+    private final ViaCepClient viaCepClient;
+
+    @GetMapping("/cep/{cep}")
+    public ResponseEntity<EnderecoDTO>
+        getEndereco(@PathVariable String cep){
+        var endereco = viaCepClient.buscarEnderecoPorCep(cep);
+        return ResponseEntity.ok(endereco);
+    }
 
     @GetMapping
     public ResponseEntity<List<FilmeDTO>> listarTodos() {
